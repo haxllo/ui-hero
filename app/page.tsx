@@ -5,6 +5,7 @@ import HowItWorks from "@/components/sections/how-it-works";
 import FeatureGrid from "@/components/sections/feature-grid";
 import SocialProof from "@/components/sections/social-proof";
 import Pricing from "@/components/sections/pricing";
+import ContactSection from "@/components/sections/contact-section";
 import FinalCTA from "@/components/sections/final-cta";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         <FeatureGrid />
         <SocialProof />
         <Pricing />
+        <ContactSection />
         <FinalCTA />
       </main>
       <Footer />
