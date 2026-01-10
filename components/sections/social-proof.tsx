@@ -1,44 +1,38 @@
 export default function SocialProof() {
-  const stats = [
-    { number: "500+", label: "AI Startups" },
-    { number: "10k+", label: "Conversions" },
-    { number: "30min", label: "Avg. Launch Time" },
-    { number: "4.9/5", label: "User Rating" }
-  ];
-
   return (
-    <section className="py-24 px-6 bg-gradient-to-br from-purple-600 to-blue-600 text-white">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Trusted by AI Founders Worldwide
-          </h2>
-          <p className="text-xl text-purple-100 max-w-2xl mx-auto">
-            Join hundreds of teams building credible landing pages in record time
+    <section className="py-32 px-6 bg-[#1A1A1A] text-white">
+      <div className="max-w-7xl mx-auto">
+        {/* Large quote */}
+        <div className="max-w-4xl mb-16">
+          <p className="text-[40px] md:text-[56px] leading-[1.2] font-bold mb-8">
+            "Spent 3 weeks on our landing page. Found this. Rebuilt in 2 hours. Looks better."
           </p>
-        </div>
-        
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-5xl md:text-6xl font-bold mb-2">{stat.number}</div>
-              <div className="text-lg text-purple-100">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-        
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-          <p className="text-xl md:text-2xl text-center mb-6 leading-relaxed">
-            "We went from blank Figma to a live landing page in 2 hours. 
-            UI Hero gave us the confidence to launch fast."
-          </p>
-          <div className="flex items-center justify-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-purple-300"></div>
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-[#FF3366]"></div>
             <div>
-              <div className="font-semibold">Sarah Chen</div>
-              <div className="text-sm text-purple-100">Founder, AI Analytics Co.</div>
+              <div className="font-mono text-[14px] font-bold">Marcus Chen</div>
+              <div className="font-mono text-[11px] uppercase tracking-wider text-[#999999]">Founder, Inference.ai</div>
             </div>
           </div>
+        </div>
+        
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 pt-16 border-t border-white/10">
+          {[
+            { value: '500+', label: 'Teams' },
+            { value: '6', label: 'Sections' },
+            { value: '30m', label: 'Setup' },
+            { value: '$39', label: 'Price' }
+          ].map((stat, i) => (
+            <div key={i}>
+              <div className="font-mono text-[48px] font-bold leading-none mb-2 text-[#FF3366]">
+                {stat.value}
+              </div>
+              <div className="font-mono text-[11px] uppercase tracking-wider text-[#666666]">
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

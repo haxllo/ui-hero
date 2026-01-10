@@ -1,58 +1,57 @@
 export default function FeatureGrid() {
   const features = [
     {
-      icon: "⚡",
-      title: "Conversion-Focused",
-      description: "Every section is designed to build trust and drive action, not just look pretty."
+      title: "Conversion-First",
+      description: "Every pixel drives action. No decoration for decoration's sake."
     },
     {
-      icon: "🎯",
-      title: "AI-Specific Copy",
-      description: "Pre-written copy that speaks to AI product users. Edit to match your brand."
+      title: "Clean Code",
+      description: "TypeScript. Tailwind. The kind of code you'd actually write."
     },
     {
-      icon: "🚀",
-      title: "Next.js + Tailwind",
-      description: "Modern stack. Zero dependencies. Production-ready code you can trust."
+      title: "Fast Setup",
+      description: "Copy, customize, deploy. 30 minutes, not 30 days."
     },
     {
-      icon: "📱",
-      title: "Mobile-First Design",
-      description: "Every section looks perfect on mobile, tablet, and desktop out of the box."
+      title: "Mobile-First",
+      description: "Tested on every device. No surprises in production."
     },
     {
-      icon: "🎨",
-      title: "Easy Customization",
-      description: "Change colors, fonts, and layout with simple Tailwind classes."
+      title: "Customizable",
+      description: "Change anything with Tailwind. No CSS wrestling."
     },
     {
-      icon: "⚖️",
-      title: "Commercial License",
-      description: "Use in unlimited projects. No attribution required. You own the code."
+      title: "Licensed",
+      description: "Commercial use. Client work. Your SaaS. Anywhere."
     }
   ];
 
   return (
-    <section className="py-24 px-6 bg-gray-50">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Built for AI Founders Who Ship Fast
+    <section className="py-32 px-6 bg-[#FAFAFA] border-y border-[#E5E5E5]">
+      <div className="max-w-7xl mx-auto">
+        {/* Section header */}
+        <div className="mb-24">
+          <div className="font-mono text-[11px] uppercase tracking-wider text-[#999999] mb-4">
+            / Features
+          </div>
+          <h2 className="text-[48px] md:text-[64px] leading-[1] font-bold max-w-3xl">
+            Built different.
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Stop wrestling with design. Start with sections that convert.
-          </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Features grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E5E5E5]">
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="bg-white p-8 rounded-xl border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all"
+              className="bg-white p-12 hover:bg-[#FF3366] group transition-all duration-500 cursor-default"
             >
-              <div className="text-5xl mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              <h3 className="font-mono text-[14px] uppercase tracking-wider font-bold mb-4 group-hover:text-white transition-colors">
+                {feature.title}
+              </h3>
+              <p className="text-[16px] leading-[1.6] text-[#666666] group-hover:text-white/90 transition-colors">
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>

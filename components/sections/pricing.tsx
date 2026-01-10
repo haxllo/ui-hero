@@ -1,20 +1,14 @@
 "use client";
 
-import { useState } from "react";
-
 export default function Pricing() {
-  const [isYearly, setIsYearly] = useState(false);
-
   const plans = [
     {
-      name: "Starter",
-      price: isYearly ? "0" : "0",
-      period: "Forever free",
-      description: "Perfect for exploring what's possible",
+      name: "Free",
+      price: "0",
+      description: "Test the waters",
       features: [
         "3 basic sections",
-        "Next.js + Tailwind code",
-        "Personal projects only",
+        "Personal use only",
         "Community support"
       ],
       cta: "Start Free",
@@ -22,118 +16,97 @@ export default function Pricing() {
     },
     {
       name: "Pro",
-      price: isYearly ? "79" : "39",
-      period: isYearly ? "one-time" : "one-time",
-      description: "Everything you need to launch with confidence",
+      price: "39",
+      description: "Ship today",
       features: [
-        "All 6 premium sections",
-        "Commercial license included",
-        "Free lifetime updates",
+        "All 6 sections",
+        "Commercial license",
+        "Lifetime updates",
         "Priority support",
-        "Copy templates included",
-        "Use in unlimited projects"
+        "Unlimited projects"
       ],
-      cta: "Get Pro Access",
-      highlighted: true,
-      badge: "MOST POPULAR"
+      cta: "Get Pro",
+      highlighted: true
     },
     {
-      name: "Enterprise",
-      price: "Custom",
-      period: "Let's talk",
-      description: "Custom sections built for your brand",
+      name: "Custom",
+      price: "—",
+      description: "Your brand",
       features: [
         "Everything in Pro",
-        "Custom section design",
-        "Brand-specific copy",
-        "Dedicated support",
-        "Design consultation"
+        "Custom sections",
+        "Brand copy",
+        "Dedicated support"
       ],
-      cta: "Contact Sales",
+      cta: "Contact",
       highlighted: false
     }
   ];
 
   return (
-    <section className="py-24 px-6 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Launch Fast, Pay Once
+    <section className="py-32 px-6 bg-white" id="pricing">
+      <div className="max-w-7xl mx-auto">
+        {/* Section header */}
+        <div className="mb-24">
+          <div className="font-mono text-[11px] uppercase tracking-wider text-[#999999] mb-4">
+            / Pricing
+          </div>
+          <h2 className="text-[48px] md:text-[64px] leading-[1] font-bold max-w-3xl">
+            Pay once.
+            <br />
+            <span className="text-[#999999]">Own forever.</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            No subscriptions. No surprises. Just professional landing sections.
-          </p>
-          
-          {/* <div className="inline-flex items-center gap-3 bg-gray-100 p-1 rounded-lg">
-            <button
-              onClick={() => setIsYearly(false)}
-              className={`px-6 py-2 rounded-md transition-all ${!isYearly ? 'bg-white shadow-sm font-semibold' : 'text-gray-600'}`}
-            >
-              One-time
-            </button>
-            <button
-              onClick={() => setIsYearly(true)}
-              className={`px-6 py-2 rounded-md transition-all ${isYearly ? 'bg-white shadow-sm font-semibold' : 'text-gray-600'}`}
-            >
-              With Updates
-            </button>
-          </div> */}
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Pricing grid */}
+        <div className="grid md:grid-cols-3 gap-px bg-[#E5E5E5]">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative rounded-2xl p-8 border-2 ${
-                plan.highlighted
-                  ? 'border-purple-500 shadow-2xl scale-105'
-                  : 'border-gray-200'
+              className={`p-12 ${
+                plan.highlighted ? 'bg-[#1A1A1A]' : 'bg-[#FAFAFA]'
               }`}
             >
-              {plan.badge && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-purple-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                  {plan.badge}
-                </div>
-              )}
-              
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                <p className="text-gray-600 text-sm">{plan.description}</p>
+              <div className={`font-mono text-[11px] uppercase tracking-wider mb-8 ${
+                plan.highlighted ? 'text-white/40' : 'text-[#999999]'
+              }`}>
+                {plan.name}
               </div>
               
-              <div className="mb-6">
-                <div className="flex items-baseline gap-2">
-                  {plan.price !== "Custom" && <span className="text-2xl font-semibold text-gray-900">$</span>}
-                  <span className="text-5xl font-bold text-gray-900">{plan.price}</span>
+              <div className="mb-8">
+                <div className="flex items-baseline gap-2 mb-2">
+                  {plan.price !== "—" && <span className={`text-[24px] font-bold ${
+                    plan.highlighted ? 'text-white' : 'text-[#1A1A1A]'
+                  }`}>$</span>}
+                  <span className={`text-[72px] font-bold leading-none ${
+                    plan.highlighted ? 'text-white' : 'text-[#1A1A1A]'
+                  }`}>{plan.price}</span>
                 </div>
-                <div className="text-gray-600 mt-1">{plan.period}</div>
+                <div className={`text-[14px] ${
+                  plan.highlighted ? 'text-white/60' : 'text-[#666666]'
+                }`}>{plan.description}</div>
               </div>
               
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-4 mb-12 min-h-[180px]">
                 {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="text-purple-500 mt-1">✓</span>
-                    <span className="text-gray-700">{feature}</span>
+                  <li key={i} className="flex items-start gap-3 text-[14px]">
+                    <span className="text-[#FF3366]">→</span>
+                    <span className={plan.highlighted ? 'text-white/80' : 'text-[#666666]'}>{feature}</span>
                   </li>
                 ))}
               </ul>
               
               <button
-                className={`w-full py-3 rounded-lg font-semibold transition-colors ${
+                className={`w-full py-4 font-mono text-[11px] uppercase tracking-wider font-bold transition-all duration-300 ${
                   plan.highlighted
-                    ? 'bg-purple-600 text-white hover:bg-purple-700'
-                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                    ? 'bg-[#FF3366] text-white hover:bg-white hover:text-[#1A1A1A]'
+                    : 'bg-[#1A1A1A] text-white hover:bg-[#FF3366]'
                 }`}
               >
                 {plan.cta}
               </button>
             </div>
           ))}
-        </div>
-        
-        <div className="text-center mt-12 text-gray-600">
-          <p>All plans include commercial license. No attribution required.</p>
         </div>
       </div>
     </section>

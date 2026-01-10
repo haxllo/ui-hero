@@ -1,46 +1,64 @@
 export default function AIHero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900 text-white py-24 px-6">
-      <div className="max-w-6xl mx-auto text-center">
-        <div className="inline-block mb-4 px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full text-sm">
-          ✨ Trusted by 500+ AI startups
+    <section className="min-h-screen flex items-center justify-center px-6 py-32 relative overflow-hidden">
+      {/* Background grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+      
+      {/* Accent dot */}
+      <div className="absolute top-32 right-32 w-3 h-3 bg-[#FF3366] rounded-full"></div>
+      
+      <div className="max-w-5xl mx-auto relative z-10">
+        {/* Status badge */}
+        <div className="inline-flex items-center gap-3 mb-8 font-mono text-xs uppercase tracking-wider animate-slide-up">
+          <div className="w-2 h-2 bg-[#FF3366] rounded-full"></div>
+          <span className="text-[#666666]">Available Now</span>
         </div>
         
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-          Make Your AI Startup
+        {/* Main headline */}
+        <h1 className="text-[80px] md:text-[120px] leading-[0.9] font-bold mb-8 tracking-tight animate-slide-up animation-delay-200">
+          Ship your
           <br />
-          <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-            Look Funded
-          </span>
+          AI landing
+          <br />
+          <span className="text-[#FF3366]">in 30 min</span>
         </h1>
         
-        <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
-          Copy-paste landing sections built for AI founders who need trust, fast.
-          No design skills needed.
+        {/* Subheadline */}
+        <p className="text-[20px] md:text-[24px] leading-[1.5] text-[#666666] mb-12 max-w-2xl animate-slide-up animation-delay-400">
+          6 production-ready sections. TypeScript + Tailwind. Zero design work. Built for founders who code.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-          <button className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors text-lg">
-            Browse Sections
-          </button>
-          <button className="px-8 py-4 border border-white/30 rounded-lg hover:bg-white/10 transition-colors text-lg">
-            View Demo
-          </button>
+        {/* CTA */}
+        <div className="flex flex-col sm:flex-row gap-4 items-start animate-slide-up animation-delay-600">
+          <a 
+            href="/sections"
+            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[#1A1A1A] text-white font-mono text-sm uppercase tracking-wider hover:bg-[#FF3366] transition-all duration-300"
+          >
+            <span>Browse Sections</span>
+          </a>
+          <a 
+            href="#pricing"
+            className="inline-flex items-center gap-3 px-8 py-4 border-2 border-[#E5E5E5] text-[#1A1A1A] font-mono text-sm uppercase tracking-wider hover:border-[#1A1A1A] transition-all duration-300"
+          >
+            <span>View Pricing</span>
+          </a>
         </div>
         
-        <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-          <div className="text-sm uppercase tracking-wider">Trusted by</div>
-          <div className="flex flex-wrap justify-center gap-8">
-            <div className="px-6 py-2 bg-white/10 rounded">Logo 1</div>
-            <div className="px-6 py-2 bg-white/10 rounded">Logo 2</div>
-            <div className="px-6 py-2 bg-white/10 rounded">Logo 3</div>
-            <div className="px-6 py-2 bg-white/10 rounded">Logo 4</div>
-          </div>
+        {/* Stats bar */}
+        <div className="mt-24 pt-12 border-t border-[#E5E5E5] grid grid-cols-2 md:grid-cols-4 gap-8 animate-fade-in animation-delay-600">
+          {[
+            { label: 'Sections', value: '06' },
+            { label: 'Setup Time', value: '30m' },
+            { label: 'Teams', value: '500+' },
+            { label: 'Updates', value: '∞' }
+          ].map((stat, i) => (
+            <div key={i}>
+              <div className="font-mono text-[36px] font-bold leading-none mb-2">{stat.value}</div>
+              <div className="font-mono text-[11px] uppercase tracking-wider text-[#999999]">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </div>
-      
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
     </section>
   );
 }
