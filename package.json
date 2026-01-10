@@ -1,7 +1,10 @@
 {
   "name": "ui-hero",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Landing sections for AI startups - Next.js + Tailwind CSS",
   "private": true,
+  "author": "UI Hero",
+  "license": "SEE LICENSE IN LICENSE.md",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UI Hero
 
-## Getting Started
+**Landing sections for AI startups who need to ship fast and look credible.**
 
-First, run the development server:
+---
+
+## 🚀 What is UI Hero?
+
+UI Hero is a collection of **ready-to-use, conversion-focused landing sections** built specifically for AI startups using Next.js and Tailwind CSS.
+
+Not full pages. Not generic UI components.  
+**Startup credibility, fast.**
+
+### The Problem We Solve
+
+AI founders waste weeks on landing page design when they should be building product. They need:
+- ✅ **Trust** - Look funded and professional from day one
+- ✅ **Speed** - Ship a landing page in 30 minutes, not 3 weeks  
+- ✅ **Conversion** - Sections designed to drive action, not just look pretty
+
+### Our Solution
+
+6 battle-tested landing sections with:
+- 🎯 **AI-specific copy** that resonates with your audience
+- 🎨 **Premium design** that builds instant credibility  
+- ⚡ **Copy-paste ready** Next.js + Tailwind code
+- 📱 **Mobile-first** and responsive out of the box
+- ⚖️ **Commercial license** included - use in unlimited projects
+
+---
+
+## 📦 What's Included
+
+### The 6 Essential Sections
+
+1. **AI Hero Section** - Gradient headline, trust logos, clear CTA
+2. **How It Works** - 3-step flow, outcome-focused copy
+3. **Feature Grid** - AI-style icons, 6 key benefits
+4. **Social Proof** - Metrics, testimonials, trust signals
+5. **Pricing Section** - Clear pricing, highlighted plan
+6. **Final CTA** - Emotion-driven, single action
+
+---
+
+## 🛠️ Tech Stack
+
+- **Next.js 15** (App Router)
+- **TypeScript**
+- **Tailwind CSS v4**
+- **Zero dependencies**
+
+---
+
+## ⚡ Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```tsx
+import AIHero from '@/components/sections/ai-hero';
+import Pricing from '@/components/sections/pricing';
 
-## Learn More
+export default function Page() {
+  return (
+    <main>
+      <AIHero />
+      <Pricing />
+    </main>
+  );
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💰 Pricing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Free**: 3 basic sections for personal projects
+- **Pro ($39)**: All 6 sections + commercial license + lifetime updates
+- **Enterprise**: Custom sections for your brand
 
-## Deploy on Vercel
+✅ No subscriptions. Pay once, own forever.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎯 Who This Is For
+
+Built for:
+- 🤖 AI startup founders
+- 💼 Solo founders without design resources
+- 🚀 Early-stage teams shipping MVPs
+- 📈 SaaS builders focused on conversion
+
+---
+
+## 📄 License
+
+Commercial license included. See [LICENSE.md](LICENSE.md)
+
+---
+
+Built with ❤️ for AI founders who ship fast.
