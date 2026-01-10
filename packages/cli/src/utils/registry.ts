@@ -16,7 +16,7 @@ export async function fetchRegistry(): Promise<Registry> {
       throw new Error('Failed to fetch registry');
     }
     cachedRegistry = await response.json();
-    return cachedRegistry;
+    return cachedRegistry!;
   } catch (error) {
     // Fallback to local registry if CDN is down
     return getFallbackRegistry();
