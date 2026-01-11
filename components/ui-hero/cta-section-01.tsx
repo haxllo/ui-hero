@@ -1,90 +1,53 @@
-"use client";
-
-import { useEffect, useState } from 'react';
+/**
+ * CTA Section 01 - "Final Pulse"
+ * 
+ * High-conversion dark mode CTA with atmospheric gradients.
+ * Features: Centered bold layout, glowing accents, glassmorphism.
+ * 
+ * Usage:
+ * import CTASection01 from '@/components/library/cta-section-01'
+ */
 
 export default function CTASection01() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   return (
-    <section className="relative py-48 px-6 bg-black overflow-hidden">
-      {/* Ambient particles */}
-      <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              opacity: Math.random() * 0.3
-            }}
-          />
-        ))}
+    <section className="relative py-32 px-6 bg-slate-950 overflow-hidden">
+      {/* Background Gradients */}
+      <div className="absolute inset-0 w-full h-full">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-cyan-500/20 rounded-[100%] blur-[120px] pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
       </div>
 
-      {/* Cinematic glow following cursor */}
-      <div
-        className="absolute w-[600px] h-[600px] rounded-full blur-[150px] pointer-events-none transition-all duration-500 ease-out"
-        style={{
-          background: 'radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%)',
-          left: mousePosition.x - 300,
-          top: mousePosition.y - 300,
-        }}
-      />
+      <div className="relative max-w-4xl mx-auto text-center z-10">
+        <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-8 leading-tight">
+          Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Accelerate?</span>
+        </h2>
+        
+        <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+          Join 500+ AI startups shipping faster with our production-ready components. 
+          Stop building from scratch. Start scaling.
+        </p>
 
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
-        {/* Cinematic text */}
-        <div className="mb-16">
-          <h2 className="text-7xl md:text-8xl lg:text-9xl font-black text-white mb-8 leading-[0.9] tracking-tighter">
-            Ready to
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-pink-400 animate-glow">
-              ship faster?
-            </span>
-          </h2>
-          <p className="text-2xl text-zinc-500 max-w-2xl mx-auto leading-relaxed">
-            Join 500+ developers who stopped wasting time on design and started shipping products.
-          </p>
-        </div>
-
-        {/* Prominent CTA */}
-        <div className="space-y-6">
-          <button className="group relative px-16 py-7 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-xl font-bold overflow-hidden hover:shadow-2xl hover:shadow-violet-500/50 transition-all duration-500 hover:scale-105">
-            <span className="relative z-10">Get All Components - $39</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500 to-violet-500 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <button className="w-full sm:w-auto px-12 py-5 rounded-2xl bg-white text-slate-950 font-black text-lg hover:bg-cyan-50 transition-all duration-300 shadow-[0_0_40px_-5px_rgba(34,211,238,0.4)]">
+            Deploy Now - $39
           </button>
-
-          <div className="flex items-center justify-center gap-6 text-sm text-zinc-600">
-            <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-              Instant access
-            </span>
-            <span>·</span>
-            <span>30-day money back</span>
-            <span>·</span>
-            <span>Lifetime updates</span>
-          </div>
+          
+          <button className="w-full sm:w-auto px-12 py-5 rounded-2xl border border-white/10 text-white font-bold text-lg hover:bg-white/5 hover:border-white/20 transition-all duration-300 backdrop-blur-md">
+            View Docs
+          </button>
         </div>
 
-        {/* Social proof badges */}
-        <div className="mt-24 flex flex-wrap justify-center gap-8 opacity-40">
-          {['Stripe', 'Notion', 'Linear', 'Vercel', 'Figma'].map((company) => (
-            <div
-              key={company}
-              className="px-6 py-3 border border-zinc-800 text-zinc-600 text-sm font-medium"
-            >
-              {company}
-            </div>
-          ))}
+        {/* Minimal Trust Signal */}
+        <div className="mt-16 flex justify-center items-center gap-8 text-[11px] font-mono uppercase tracking-[0.2em] text-slate-600">
+          <div className="flex items-center gap-2">
+            <span className="text-cyan-500">✓</span>
+            <span>Commercial License</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-cyan-500">✓</span>
+            <span>Lifetime Updates</span>
+          </div>
         </div>
       </div>
     </section>

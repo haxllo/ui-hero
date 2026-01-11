@@ -1,103 +1,43 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
-    const { licenseKey } = await request.json();
+    const body = await request.json();
+    const { licenseKey } = body;
 
     if (!licenseKey) {
       return NextResponse.json(
-        { valid: false, message: 'License key is required' },
+        { valid: false, message: 'License key required' },
         { status: 400 }
       );
     }
 
-    // For development/testing, accept any key that starts with "PRO-"
-    // In production, validate with Gumroad API
-    if (process.env.NODE_ENV === 'production') {
-      return await validateWithGumroad(licenseKey);
-    } else {
-      // Development mode - simple validation
-      if (licenseKey.startsWith('PRO-')) {
-        return NextResponse.json({
-          valid: true,
-          tier: 'pro',
-          components: [
-            'hero-section-01',
-            'pricing-section-01',
-            'features-section-01',
-            'testimonials-section-01',
-            'cta-section-01',
-            'faq-section-01'
-          ]
-        });
-      } else {
-        return NextResponse.json({
-          valid: true,
-          tier: 'free',
-          components: ['hero-section-01']
-        });
-      }
-    }
-  } catch (error) {
-    return NextResponse.json(
-      { valid: false, message: 'Validation error' },
-      { status: 500 }
-    );
-  }
-}
+    // Secure Validation: Check against Environment Variable
+    // In Vercel Settings, add VALID_LICENSE_KEYS="key_1,key_2,key_3"
+    const validKeys = (process.env.VALID_LICENSE_KEYS || '')
+      .split(',')
+      .map(key => key.trim())
+      .filter(key => key.length > 0);
 
-async function validateWithGumroad(licenseKey: string) {
-  const GUMROAD_PRODUCT_ID = process.env.GUMROAD_PRODUCT_ID;
-  const GUMROAD_API_KEY = process.env.GUMROAD_API_KEY;
-
-  if (!GUMROAD_PRODUCT_ID || !GUMROAD_API_KEY) {
-    throw new Error('Gumroad credentials not configured');
-  }
-
-  try {
-    const response = await fetch('https://api.gumroad.com/v2/licenses/verify', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        product_id: GUMROAD_PRODUCT_ID,
-        license_key: licenseKey,
-        increment_uses_count: false
-      })
-    });
-
-    const data = await response.json();
-
-    if (data.success && data.purchase) {
-      // Determine tier based on variant or custom fields
-      const tier = data.purchase.variants?.toLowerCase().includes('pro') ? 'pro' : 'free';
-
+    if (validKeys.includes(licenseKey)) {
       return NextResponse.json({
         valid: true,
-        tier,
-        components: tier === 'pro' 
-          ? [
-              'hero-section-01',
-              'pricing-section-01',
-              'features-section-01',
-              'testimonials-section-01',
-              'cta-section-01',
-              'faq-section-01'
-            ]
-          : ['hero-section-01']
-      });
-    } else {
-      return NextResponse.json({
-        valid: false,
-        tier: 'free',
-        components: [],
-        message: 'Invalid license key'
+        tier: 'pro',
+        components: ['all']
       });
     }
+
+    // Invalid Key
+    return NextResponse.json({
+      valid: false,
+      tier: 'free',
+      message: 'Invalid or expired license key'
+    });
+
   } catch (error) {
+    console.error('License validation error:', error);
     return NextResponse.json(
-      { valid: false, message: 'Failed to validate with Gumroad' },
+      { valid: false, message: 'Server error during validation' },
       { status: 500 }
     );
   }

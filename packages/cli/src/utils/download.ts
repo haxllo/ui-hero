@@ -30,9 +30,11 @@ export async function downloadComponent(
       
       // Create ui-hero directory in components
       const componentDir = path.join(targetDir, 'ui-hero');
-      await fs.mkdir(componentDir, { recursive: true });
       
       const filePath = path.join(componentDir, file);
+      const fileDir = path.dirname(filePath);
+      await fs.mkdir(fileDir, { recursive: true });
+      
       await fs.writeFile(filePath, content, 'utf-8');
     }
 

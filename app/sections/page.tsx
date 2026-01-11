@@ -141,7 +141,7 @@ export default function SectionsPage() {
                 {/* Corner accents */}
                 <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#00FFFF]/0 group-hover:border-[#00FFFF] transition-colors duration-500 z-10" />
                 <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#00FFFF]/0 group-hover:border-[#00FFFF] transition-colors duration-500 z-10" />
-                
+
                 {/* Browser chrome */}
                 <div className="bg-black border-b border-white/5 px-4 py-3 flex items-center gap-2">
                   <div className="flex gap-2">
@@ -155,10 +155,18 @@ export default function SectionsPage() {
                     </div>
                   </div>
                 </div>
-                
-                {/* Preview iframe placeholder */}
-                <div className="bg-black overflow-hidden">
-                  <div className="scale-[0.7] origin-top-left w-[142.857%] h-[142.857%]">
+
+                {/* Preview iframe placeholder - with dynamic height based on section category */}
+                <div className={`bg-black overflow-hidden ${
+                  section.category === 'Hero' ? 'max-h-[700px]' :
+                  section.category === 'Features' ? 'max-h-[800px]' :
+                  section.category === 'Social Proof' ? 'max-h-[1000px]' :
+                  section.category === 'Pricing' ? 'max-h-[900px]' :
+                  section.category === 'FAQ' ? 'max-h-[700px]' :
+                  section.category === 'CTA' ? 'max-h-[950px]' :
+                  'max-h-[650px]'
+                }`}>
+                  <div className="scale-[0.75] origin-top-left w-[133.33%] h-[133.33%]">
                     {<section.component />}
                   </div>
                 </div>

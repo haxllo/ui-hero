@@ -1,9 +1,9 @@
 /**
- * FAQ Section 01 - "Accordion Style"
- * 
- * Frequently asked questions with expandable answers.
- * Features: Accordion interaction, clean design, common objections
- * 
+ * FAQ Section 01 - "Neural Query"
+ *
+ * A high-end dark mode FAQ with smooth interactions.
+ * Features: Glossy surfaces, cyan accents, refined typography.
+ *
  * Usage:
  * import FAQSection01 from '@/components/library/faq-section-01'
  */
@@ -13,92 +13,98 @@
 import { useState } from 'react';
 
 export default function FAQSection01() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
     {
-      question: "How long does it take to get started?",
-      answer: "Most teams are up and running in under 10 minutes. Just sign up, grab your API key, and make your first call. We have SDKs for Python, JavaScript, and more."
+      question: "What exactly do I get in the bundle?",
+      answer: "You receive 6 production-grade React sections (Hero, How it Works, Features, Social Proof, Pricing, Final CTA) delivered as clean TypeScript + Tailwind code. No proprietary libraries, no bloat."
     },
     {
-      question: "What AI models do you support?",
-      answer: "We support all major models including GPT-4, GPT-3.5, Claude, Llama 2, and more. You can switch between models with a single parameter change."
+      question: "Can I use these for my clients?",
+      answer: "Absolutely. The Pro license includes commercial rights for unlimited projects, including client work and commercial SaaS products. No attribution required."
     },
     {
-      question: "Is my data secure?",
-      answer: "Absolutely. We're SOC 2 Type II certified, encrypt all data in transit and at rest, and never use your data to train models. Your data stays yours."
+      question: "How do I install the components?",
+      answer: "You can use our CLI tool (npx ui-hero add) to instantly download specific sections into your project, or simply copy-paste the source code from our dashboard."
     },
     {
-      question: "Can I cancel anytime?",
-      answer: "Yes, you can cancel your subscription at any time. No questions asked, no cancellation fees. Your data remains accessible for 30 days after cancellation."
+      question: "Is there a refund policy?",
+      answer: "We offer a 30-day 'no-questions-asked' refund policy. If you don't feel UI Hero has saved you at least 20 hours of work, we'll give you your money back."
     },
     {
-      question: "Do you offer a free trial?",
-      answer: "Yes! All plans come with a 14-day free trial. No credit card required. You'll get full access to all features during the trial period."
-    },
-    {
-      question: "What kind of support do you provide?",
-      answer: "Starter plans get email support with 24-hour response times. Pro plans get priority support with 4-hour response. Enterprise gets dedicated Slack channel and phone support."
+      question: "Do you support Tailwind v4?",
+      answer: "Yes, all components are built with modern Tailwind CSS principles and are fully compatible with both v3 and the latest v4 alpha/beta releases."
     }
   ];
 
   return (
-    <section className="py-24 px-6 bg-white">
+    <section className="py-24 px-6 bg-slate-950">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Frequently asked questions
+          <h2 className="text-4xl font-bold text-white mb-4">
+            Common <span className="text-cyan-400">Inquiries</span>
           </h2>
-          <p className="text-xl text-gray-600">
-            Everything you need to know about our platform
+          <p className="text-slate-400">
+            Everything you need to know about the UI Hero ecosystem.
           </p>
         </div>
-        
+
         {/* FAQ Accordion */}
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div 
+            <div
               key={index}
-              className="border-2 border-gray-200 rounded-xl overflow-hidden hover:border-purple-300 transition-colors"
+              className={`rounded-2xl border transition-all duration-300 ${
+                openIndex === index 
+                  ? 'bg-white/5 border-white/20 shadow-[0_0_30px_-10px_rgba(255,255,255,0.1)]' 
+                  : 'bg-white/[0.02] border-white/5 hover:border-white/10'
+              }`}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full p-6 text-left flex items-center justify-between bg-white hover:bg-gray-50 transition-colors"
+                className="w-full text-left px-8 py-6 flex items-center justify-between group"
               >
-                <span className="font-bold text-lg text-gray-900 pr-4">
+                <span className={`text-lg font-medium transition-colors ${
+                  openIndex === index ? 'text-white' : 'text-slate-300 group-hover:text-white'
+                }`}>
                   {faq.question}
                 </span>
-                <span className={`text-2xl text-purple-600 transition-transform duration-300 ${
-                  openIndex === index ? 'rotate-180' : ''
+                <span className={`w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transition-all duration-300 ${
+                  openIndex === index ? 'rotate-180 bg-cyan-500 border-cyan-400' : 'bg-white/5'
                 }`}>
-                  ↓
+                  <svg className={`w-4 h-4 transition-colors ${openIndex === index ? 'text-slate-950' : 'text-slate-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 9l-7 7-7-7" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
                 </span>
               </button>
-              <div 
+              <div
                 className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? 'max-h-96' : 'max-h-0'
+                  openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="p-6 pt-0 text-gray-700 leading-relaxed">
-                  {faq.answer}
+                <div className="px-8 pb-8 pt-0">
+                  <p className="text-slate-400 leading-relaxed border-t border-white/5 pt-6">
+                    {faq.answer}
+                  </p>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center p-8 bg-purple-50 rounded-2xl border-2 border-purple-100">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Still have questions?
-          </h3>
-          <p className="text-gray-600 mb-6">
-            Our team is here to help. Get in touch and we'll respond within 24 hours.
+
+        {/* Minimal CTA */}
+        <div className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-white/5 text-center">
+          <p className="text-slate-300 mb-4 font-medium">
+            Still have lingering questions?
           </p>
-          <button className="px-8 py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-colors">
-            Contact Support
-          </button>
+          <a href="mailto:support@ui-hero.com" className="inline-flex items-center gap-2 text-cyan-400 font-bold hover:text-cyan-300 transition-colors">
+            <span>Contact System Ops</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>

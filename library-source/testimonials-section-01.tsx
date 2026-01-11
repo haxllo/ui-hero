@@ -1,8 +1,8 @@
 /**
- * Testimonials Section 01 - "Social Proof Grid"
+ * Testimonials Section 01 - "Social Validation"
  * 
- * Customer testimonials in a clean grid layout.
- * Features: Profile images, quotes, company names
+ * Customer testimonials in a high-end dark grid.
+ * Features: Glowing cards, glassmorphism, refined typography.
  * 
  * Usage:
  * import TestimonialsSection01 from '@/components/library/testimonials-section-01'
@@ -11,77 +11,95 @@
 export default function TestimonialsSection01() {
   const testimonials = [
     {
-      quote: "This platform cut our AI development time by 80%. We shipped our MVP in 2 weeks instead of 2 months.",
-      author: "Sarah Chen",
+      quote: "This infrastructure layer allowed us to scale from 1k to 1M requests overnight without touching a single config file.",
+      author: "Dr. Aris Thorne",
+      role: "Lead Scientist",
+      company: "Cognitive Flux",
+      avatar: "bg-cyan-500/20 text-cyan-400"
+    },
+    {
+      quote: "The low-latency response times are unlike anything we've tested. Essential for real-time AI applications.",
+      author: "Elena Vance",
       role: "CTO",
-      company: "DataViz AI",
-      avatar: "bg-gradient-to-br from-purple-400 to-pink-400"
+      company: "Nova Systems",
+      avatar: "bg-purple-500/20 text-purple-400"
     },
     {
-      quote: "The best AI infrastructure I've worked with. Fast, reliable, and the support team is incredible.",
-      author: "Marcus Rodriguez",
-      role: "Lead Engineer",
-      company: "AutoML Labs",
-      avatar: "bg-gradient-to-br from-cyan-400 to-blue-400"
+      quote: "Finally, a developer-first AI platform. The integration took minutes, and the observability is world-class.",
+      author: "Julian Reed",
+      role: "SRE",
+      company: "Vector Lab",
+      avatar: "bg-blue-500/20 text-blue-400"
     },
     {
-      quote: "We scaled from 0 to 1M API calls without any infrastructure headaches. Just works.",
-      author: "Emily Zhang",
+      quote: "We've reduced our compute costs by 40% while increasing model throughput. A no-brainer for any serious startup.",
+      author: "Sarah Jenkins",
       role: "Founder",
-      company: "Neural Insights",
-      avatar: "bg-gradient-to-br from-green-400 to-emerald-400"
+      company: "Aether AI",
+      avatar: "bg-emerald-500/20 text-emerald-400"
     },
     {
-      quote: "Finally, an AI platform that doesn't require a PhD to use. Our team was productive on day one.",
-      author: "James Wilson",
-      role: "Product Manager",
-      company: "Cognition Inc",
-      avatar: "bg-gradient-to-br from-orange-400 to-red-400"
+      quote: "The support team actually understands LLM orchestration. They've been a partner, not just a vendor.",
+      author: "Marcus Sol",
+      role: "VP Eng",
+      company: "Deep Logic",
+      avatar: "bg-orange-500/20 text-orange-400"
     },
     {
-      quote: "The accuracy and speed are unmatched. Our customers immediately noticed the quality improvement.",
-      author: "Priya Sharma",
-      role: "VP Engineering",
-      company: "SmartChat",
-      avatar: "bg-gradient-to-br from-indigo-400 to-purple-400"
-    },
-    {
-      quote: "Migrated from our homegrown solution in a weekend. Wish we'd found this 6 months ago.",
-      author: "Alex Kim",
-      role: "Senior Developer",
-      company: "VisionAI",
-      avatar: "bg-gradient-to-br from-yellow-400 to-orange-400"
+      quote: "The most stable API in the industry. We haven't had a single minute of downtime in 6 months of heavy usage.",
+      author: "Lisa Chen",
+      role: "Backend Lead",
+      company: "Omni Mind",
+      avatar: "bg-indigo-500/20 text-indigo-400"
     }
   ];
 
   return (
-    <section className="py-24 px-6 bg-slate-50">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-24 px-6 bg-slate-950 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Loved by thousands of developers
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Trusted by the <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+              Next Generation
+            </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            See what our customers are saying about building with us
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            From solo labs to enterprise clusters, we provide the backbone for tomorrow's intelligent systems.
           </p>
         </div>
         
         {/* Testimonials grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100"
+              className="bg-white/[0.03] p-8 rounded-3xl border border-white/5 hover:border-white/10 transition-all duration-300 group"
             >
-              <p className="text-gray-700 mb-6 leading-relaxed text-lg">
-                "{testimonial.quote}"
-              </p>
-              <div className="flex items-center gap-4">
-                <div className={`w-12 h-12 rounded-full ${testimonial.avatar}`}></div>
+              <div className="mb-6">
+                {/* 5-star rating (simplified) */}
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 text-cyan-500/50" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-slate-300 leading-relaxed text-lg italic">
+                  "{testimonial.quote}"
+                </p>
+              </div>
+              <div className="flex items-center gap-4 border-t border-white/5 pt-6">
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-xs ${testimonial.avatar} border border-white/10`}>
+                  {testimonial.author.split(' ').map(n => n[0]).join('')}
+                </div>
                 <div>
-                  <div className="font-bold text-gray-900">{testimonial.author}</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="font-bold text-white group-hover:text-cyan-400 transition-colors">{testimonial.author}</div>
+                  <div className="text-xs text-slate-500 font-mono uppercase tracking-wider">
                     {testimonial.role} @ {testimonial.company}
                   </div>
                 </div>
