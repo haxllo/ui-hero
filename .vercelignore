@@ -1,0 +1,2 @@
+# Ignore CLI package during Vercel builds
+packages/cli

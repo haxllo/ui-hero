@@ -1,5 +1,5 @@
 {
-  "name": "ui-hero",
+  "name": "@ciqada/ui-hero",
   "version": "1.0.0",
   "description": "CLI tool to install UI Hero landing sections",
   "main": "dist/index.js",
